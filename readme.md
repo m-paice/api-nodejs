@@ -9,6 +9,7 @@
 
 ```js
 npm install
+docker-compose up -d
 ```
 
 ## Iniciar projeto
