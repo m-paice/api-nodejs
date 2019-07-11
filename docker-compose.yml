@@ -1,0 +1,26 @@
+version: "2.0"
+
+services:
+  mongodb:
+    image: mongo:4
+    container_name: mongodb-axample
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "password"
+      MONGO_INITDB_DATABASE: "example"
+    ports:
+      - 27013:27017
+
+  mongoexpress:
+    container_name: mongoexpress-example
+    image: mongo-express:latest
+    restart: always
+    ports:
+      - 9595:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_ADMINUSERNAME: "root"
+      ME_CONFIG_MONGODB_ADMINPASSWORD: "password"
+    depends_on:
+      - mongodb
